@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/mainpg/mainpg",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/canteen/canteen",
+    "pages/dish/dish",
+    "pages/my/my",
+    "pages/mycomment/mycomment",
+    "pages/input/input",
+    "pages/edit/edit",
+    "pages/djy/djy",
+    "pages/commint com/commint com",
+    "pages/canvas/canvas",
+    "pages/test/test",
+    
+    "pages/xieyi/xieyi"
+  ],
+  "window": {
+    "backgroundColor": "#FFFF00",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFF00",
+    "navigationBarTitleText": "R.SHARE",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/djy/djy",
+        "selectedIconPath": "images/08.png",
+        "iconPath": "images/07.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mainpg/mainpg",
+        "selectedIconPath": "images/05.png",
+        "iconPath": "images/06.png",
+        "text": "预定"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "selectedIconPath": "images/10.png",
+        "iconPath": "images/09.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

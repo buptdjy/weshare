@@ -1,0 +1,28 @@
+<!--pages/deployFunctions/deployFunctions.wxml-->
+<view class="container1">
+ 
+ <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+      size="default"
+    ></button>
+    <view class="userinfo-nickname-wrapper">
+      <button catchtap="f0" class="edit" hover-class="edit_hover">编辑</button>
+    </view>
+  </view>
+  <van-cell-group>
+    <van-cell title="昵称" value="{{datalist[0].nickname}}" />
+    <van-cell title="性别" value="{{gender}}" />
+    <van-cell title="年级" placeholder="未设置" value="{{datalist[0].grade}}" />
+    <van-cell title="学院" value="{{datalist[0].school}}" />
+    <view class="air"></view>
+  <van-cell title="用户协议" border="{{ true }}" is-link clickable="{{true}}" url="/pages/xieyi/xieyi" />
+  <van-cell title="客服中心" border="{{ true }}" is-link clickable="{{true}}" url="/pages/xieyi/xieyi" />
+  
+  </van-cell-group>
+</view>
+<button open-type="getUserInfo" bindtap="getInfo" bindgetuserinfo="getUserInfo">获取用户登录信息</button>

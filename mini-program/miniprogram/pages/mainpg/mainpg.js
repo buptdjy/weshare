@@ -138,40 +138,40 @@ Page({
 
    var x=this;
     //建立连接
-    wx.connectSocket({
-      url: "wss://canteencloud.com/ws",
-    })
+    //wx.connectSocket({
+    //  url: "wss://canteencloud.com/ws",
+   // })
 
     //连接成功
-    wx.onSocketOpen(function () {
-      wx.sendSocketMessage({
-        data: 'stock',
-      })
-    })
+    //wx.onSocketOpen(function () {
+     // wx.sendSocketMessage({
+        //data: 'stock',
+      //})
+  //  })
    
     //接收数据
-    wx.onSocketMessage(function (data) {
+   // wx.onSocketMessage(function (data) {
      
 
       
-      console.log(data.data);
+    //  console.log(data.data);
      
-     var objData = JSON.parse(data.data);
-     x.setData({
-       people:objData
-     })
+     //var objData = JSON.parse(data.data);
+    // x.setData({
+      // people:objData
+   //  })
      
      
-    })
+   // })
 
     //连接失败
-    wx.onSocketError(function () {
-      console.log('websocket连接失败！');
+   // wx.onSocketError(function () {
+     // console.log('websocket连接失败！');
 
-    this.getOpenid();
-  })
+   // this.getOpenid();
+  //})
 
-    this.getOpenid();
+    //this.getOpenid();
   },
 
   //获取用户openid

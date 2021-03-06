@@ -1,9 +1,0 @@
-/* pages/canvas/canvas.wxss */
-.canvas {
-  width: 100%;
-  height: 200px;
-}
-
-page {
-  background: #ffffff;
-}

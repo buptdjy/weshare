@@ -14,7 +14,7 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room",
-    "pages/canteen/canteen",
+    
     "pages/dish/dish",
     "pages/my/my",
     "pages/mycomment/mycomment",
@@ -22,7 +22,7 @@
     "pages/edit/edit",
     "pages/djy/djy",
     "pages/commint com/commint com",
-    "pages/canvas/canvas",
+    
     "pages/test/test",
     
     "pages/xieyi/xieyi"

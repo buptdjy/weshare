@@ -1,7 +1,8 @@
 // pages/deployFunctions/deployFunctions.js
-const db = wx.cloud.database().collection('userinfo')
-Page({
+const db = wx.cloud.database({env: 'bupt2018-8hxvd'}).collection('userinfo')
 
+Page({
+ 
   /**
    * 页面的初始数据
    */
@@ -30,24 +31,43 @@ Page({
     //wx.setStorageSync('avatar', avatarUrl)
     let that = this
     const openid = wx.getStorageSync('openid')
-    console.log(that.data.mid)
-    console.log("sssss")
+    const gender = wx.getStorageSync('gender')
+    console.log(openid)
     db.where({
       _openid: openid
     }).get({
       success(res) {
+        if(res.data.length) {
+          that.setData({
+            datalist: res.data
+          })
+          db.where({
+            _openid: openid
+          }).add({
+            avatarUrl: './user-unlogin.png'
+          })
+        }
+        else {
+          db.add({
+            data: {
+              // _openid: openid,
+              _gender: gender,
+              _nickname: "",
+              _school: "",
+              _grade: ""
+            },
+            success: res => {
+              console.log("yeyeye")
+            },
+            fail: res => {
+              console.log("nonono")
+            }
+          })
+        }
         console.log("请求成功", res)
-        that.setData({
-          datalist: res.data
-        })
-        db.where({
-          _openid: openid
-        }).add({
-          avatarUrl: './user-unlogin.png'
-        })
       },
       fail(res) {
-        console.log("请求失败", res)
+        console.log("请求失败：" + res)
       }
     })
 
@@ -73,6 +93,7 @@ Page({
     console.log("look here!")
     console.log(e)
     if (!this.data.logged && e.detail.userInfo) {
+      console.log("sdahjdhsakciuhc")
       this.setData({
         logged: true,
         avatarUrl: e.detail.userInfo.avatarUrl,
@@ -151,6 +172,7 @@ Page({
   getUserInfo: function (e) {
     var openid = wx.getStorageSync('openid')
     var userInfo = e.detail.userInfo
+    console.log(openid)
     console.log(e)
     console.log(userInfo)
     // db.where({

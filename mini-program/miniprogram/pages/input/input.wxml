@@ -28,7 +28,7 @@
               <text>{{gradeArray[gradeIndex]}}</text>
             </view>
 
-          </picker>
+          </picker> 
 
     </view>
 <!-- <view class="section {{reply?'on':'off'}}">

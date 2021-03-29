@@ -1,7 +1,7 @@
 // miniprogram/pages/dish/dish.js
 //获取应用实例
 const app = getApp()
-const db = wx.cloud.database()
+const db = wx.cloud.database() 
 const utilsDays = require('../../utils/utils-days');
 
 // 初始化 cloud

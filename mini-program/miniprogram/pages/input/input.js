@@ -1,5 +1,5 @@
 // pages/input/input.js
-const db = wx.cloud.database().collection('userinfo')
+const db = wx.cloud.database({env: 'bupt2018-8hxvd'}).collection('userinfo')
 wx.cloud.init()
 var newname
 Page({
@@ -143,7 +143,7 @@ Page({
         id = res.data[0]._id
         db.doc(id).update({
           data: {
-            nickname: newname.detail.value,
+            nickname: newname.detail.value, 
             gender: gender
           },
           success: function (res) {
@@ -168,7 +168,7 @@ Page({
 
   schoollist: function (e) {
     console.log('school-e:', e)
-    console.log('年级：', this.data.schoolArray[e.detail.value])
+    console.log('学院：', this.data.schoolArray[e.detail.value])
 
     var openid = wx.getStorageSync('openid')
     var id = 'aaa'

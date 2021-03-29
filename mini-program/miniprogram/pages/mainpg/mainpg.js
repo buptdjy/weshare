@@ -1,5 +1,8 @@
 // miniprogram/pages/mainpg/mainpg.js
-var db = wx.cloud.database()
+const app = getApp()
+const db = wx.cloud.database({env: 'bupt2018-8hxvd'})
+
+wx.cloud.init();
 
 Page({
   test() {
@@ -24,6 +27,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    datalist: [],
     canteenlist:[
       {
         name:"学一",
@@ -34,96 +38,6 @@ Page({
         num1: 16,
         flag:1
 
-      },
-      {
-        name: "学二",
-        people: 11,
-        id: 2,
-        num:23456,
-        time: 20200605,
-        num1:16,
-        flag: 0
-
-      },
-      {
-        name: "学三",
-        people: 20,
-        id: 3,
-        num:456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
-      },
-      {
-        name: "学四",
-        people: 10,
-        id: 4,
-        num: 456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
-      },
-      {
-        name: "学五",
-        people: 2,
-        id: 5,
-        num: 456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
-      },
-      {
-        name: "教一",
-        people: 30,
-        id: 6,
-        num: 456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
-      },
-      {
-        name: "教二",
-        people: 10,
-        id: 7,
-        num: 456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
-      },
-      {
-        name: "教三",
-        people: 10,
-        id: 8,
-        num: 456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
-      },
-      {
-        name: "教四",
-        people: 10,
-        id: 9,
-        num: 456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
-      },
-      {
-        name: "教五",
-        people: 10,
-        id: 10,
-        num: 456789,
-        time: 20200605,
-        num1: 16,
-        flag: 0
-
       }
     ],
 
@@ -131,47 +45,28 @@ Page({
     openid: ''
   },
 
+  onShow: function (options) {
+    this.onLoad();
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-   var x=this;
-    //建立连接
-    //wx.connectSocket({
-    //  url: "wss://canteencloud.com/ws",
-   // })
-
-    //连接成功
-    //wx.onSocketOpen(function () {
-     // wx.sendSocketMessage({
-        //data: 'stock',
-      //})
-  //  })
-   
-    //接收数据
-   // wx.onSocketMessage(function (data) {
-     
-
-      
-    //  console.log(data.data);
-     
-     //var objData = JSON.parse(data.data);
-    // x.setData({
-      // people:objData
-   //  })
-     
-     
-   // })
-
-    //连接失败
-   // wx.onSocketError(function () {
-     // console.log('websocket连接失败！');
-
-   // this.getOpenid();
-  //})
-
-    //this.getOpenid();
+    let that = this
+    // console.log("sdadasdas")
+    db.collection('order').get({
+      success(res) {
+        console.log("FIRST TIME SUCKER!!", res)
+        console.log(Date())
+        that.setData({
+          datalist: res.data
+        })
+      },
+      fail(res) {
+        console.log("AWWWWW MAN", res)
+      }
+    })
   },
 
   //获取用户openid
@@ -245,12 +140,31 @@ Page({
 
   },
   f0: function (event) {
-    var canteenId = event.currentTarget.dataset.canteenId
-    console.log(canteenId);
+    let that = this
+    var time = new Date();
+
+    console.log("HIYA!!!!")
+
+    db.collection('order').add({
+      data: {
+        order_no:Math.random(),
+        flag:1,
+        location:"北京邮电大学",
+        time:time,
+        box_num:5
+      },
+      success: res => {
+        console.log("SECOND TIME MOTHERFUCKER!!!")
+      },
+      fail: res => {
+        console.log("SORRY!")
+      }
+    })
+
+    // var canteenId = event.currentTarget.dataset.canteenId
+    // console.log(canteenId);
     wx.navigateTo({
       url: '/pages/canteen/canteen?id=' + canteenId
     })
   },
-
-  
 })

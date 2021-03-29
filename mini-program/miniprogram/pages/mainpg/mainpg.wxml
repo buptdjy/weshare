@@ -1,7 +1,7 @@
 <!--miniprogram/pages/mainpg/mainpg.wxml-->
 <view class="list1">
  
- <view class="uploader" wx:for="{{canteenlist}}" data-canteen-id="{{item.id}}" bindtap="f0" >
+ <view class="uploader" wx:for="{{datalist}}" data-canteen-id="{{item.id}}" bindtap="f0" >
  <view wx:if="{{item.flag == 0 }}" class="uploader1">
  <image src="/images/14.png" class="image1"></image>
  <text class="uploader-text">已完成</text>
@@ -15,10 +15,10 @@
   <view class="divLine"></view>
 
  
-<view  class="uploader-text2"><text>订单号     {{item.num}}</text> </view>
+<view  class="uploader-text2"><text>订单号     {{item.order_no}}</text> </view>
 <view  class="uploader-text2"><text>时间    {{item.time}}</text> </view>
-<view  class="uploader-text2"><text>地点     北京邮电大学</text> </view>
-<view  class="uploader-text2"><text>柜子号     {{item.num1}}</text> </view>
+<view  class="uploader-text2"><text>地点     {{item.location}}</text> </view>
+<view  class="uploader-text2"><text>柜子号     {{item.box_num}}</text> </view>
 </view>
 
 </view>

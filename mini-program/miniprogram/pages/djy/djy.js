@@ -1,4 +1,9 @@
 // miniprogram/pages/djy/djy.js
+const db = wx.cloud.database({env: 'bupt2018-8hxvd'})
+import appUtil from '../../utils/time_utils.js';
+import randUtil from '../../utils/rand.js';
+
+
 Page({
 
   /**
@@ -7,37 +12,37 @@ Page({
   data: {
     canteenlist: [
       {
-        name: "小格冰箱",
-        people: "包含冷藏，适用于存放化妆品，少量饮料",
+        name: "小格冰箱-冷藏",
+        people: "包含冷藏，适用于存放化妆品，少量饮料", 
         id: 1
 
       },
       {
-        name: "中格冰箱",
+        name: "中格冰箱-冷藏",
         people: "包含冷藏，适用于存放化妆品，少量饮料",
         id: 2
 
       },
       {
-        name: "大格冰箱",
+        name: "大格冰箱-冷藏",
         people: "包含冷藏，适用于存放化妆品，少量饮料",
         id: 3
 
       },
       {
-        name: "小格冰箱",
+        name: "小格冰箱-冷冻",
         people: "包含冷冻，适用于存放化妆品，少量饮料",
         id: 4
 
       },
       {
-        name: "中格冰箱",
+        name: "中格冰箱-冷冻",
         people: "包含冷冻，适用于存放化妆品，少量饮料",
         id: 5
 
       },
       {
-        name: "大格冰箱",
+        name: "大格冰箱-冷冻",
         people: "包含冷冻，适用于存放化妆品，少量饮料",
         id: 6
 
@@ -105,8 +110,29 @@ Page({
     var dishId = event.currentTarget.dataset.dishId
     wx.setStorageSync('dishId', dishId)
     console.log(dishId);
-    wx.navigateTo({
-      url: '/pages/dish/dish?id=' + dishId
-    })
-  }
+
+    let that = this
+    var time = appUtil(new Date,"Y-M-D h:m:s");
+
+    console.log("HIYA!!!!")
+
+    db.collection('order').add({
+      data: {
+        order_no:randUtil(),
+        flag:1,
+        location:"北京邮电大学",
+        time:time,
+        box_num:dishId
+      },
+      success: res => {
+        console.log("SECOND TIME MOTHERFUCKER!!!")
+        wx.navigateTo({
+          url: '/pages/dish/dish?id=' + dishId
+        })
+      },
+      fail: res => {
+        console.log("SORRY!", res)
+      }
+  })
+}
 })

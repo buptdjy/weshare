@@ -19,7 +19,7 @@
     <van-cell title="性别" value="{{gender}}" />
     <van-cell title="年级" placeholder="未设置" value="{{datalist[0].grade}}" />
     <van-cell title="学院" value="{{datalist[0].school}}" />
-    <view class="air"></view>
+    <view class="air"></view> 
   <van-cell title="用户协议" border="{{ true }}" is-link clickable="{{true}}" url="/pages/xieyi/xieyi" />
   <van-cell title="客服中心" border="{{ true }}" is-link clickable="{{true}}" url="/pages/xieyi/xieyi" />
   
